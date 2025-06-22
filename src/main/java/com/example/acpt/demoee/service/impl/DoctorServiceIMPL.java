@@ -1,9 +1,9 @@
-package com.example.acpt.demo.service.impl;
+package com.example.acpt.demoee.service.impl;
 
 
-import com.example.acpt.demo.db.DBConnection;
-import com.example.acpt.demo.dto.DoctorDto;
-import com.example.acpt.demo.service.DoctorService;
+import com.example.acpt.demoee.db.DBConnection;
+import com.example.acpt.demoee.dto.DoctorDto;
+import com.example.acpt.demoee.service.DoctorService;
 
 import java.sql.*;
 import java.util.ArrayList;

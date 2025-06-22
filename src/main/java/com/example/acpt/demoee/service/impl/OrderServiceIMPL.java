@@ -1,9 +1,9 @@
-package com.example.acpt.demo.service.impl;
+package com.example.acpt.demoee.service.impl;
 
-import com.example.acpt.demo.db.DBConnection;
-import com.example.acpt.demo.dto.AppoinmentDetailDto;
-import com.example.acpt.demo.dto.AppoinmentDto;
-import com.example.acpt.demo.service.OrderService;
+import com.example.acpt.demoee.db.DBConnection;
+import com.example.acpt.demoee.dto.AppoinmentDetailDto;
+import com.example.acpt.demoee.dto.AppoinmentDto;
+import com.example.acpt.demoee.service.OrderService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

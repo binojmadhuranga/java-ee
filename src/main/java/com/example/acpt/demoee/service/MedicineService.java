@@ -1,6 +1,6 @@
-package com.example.acpt.demo.service;
+package com.example.acpt.demoee.service;
 
-import com.example.acpt.demo.dto.MedicineDto;
+import com.example.acpt.demoee.dto.MedicineDto;
 
 import java.util.List;
 
