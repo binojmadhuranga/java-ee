@@ -9,7 +9,7 @@ public interface DoctorService {
 
     boolean saveDoctor(DoctorDto doctorDto);
 
-    boolean updateDoctor(int id, DoctorDto doctorDto);
+    boolean updateDoctor(DoctorDto doctorDto);
 
     boolean deleteDoctor(int id);
 

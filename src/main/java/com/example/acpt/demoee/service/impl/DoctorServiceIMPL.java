@@ -8,7 +8,6 @@ import com.example.acpt.demoee.service.DoctorService;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static java.lang.Class.forName;
 
@@ -87,7 +86,7 @@ public class DoctorServiceIMPL implements DoctorService {
 
 
     @Override
-    public boolean updateDoctor(int id, DoctorDto doctorDto) {
+    public boolean updateDoctor(DoctorDto doctorDto) {
 
         try {
             // Load the JDBC driver

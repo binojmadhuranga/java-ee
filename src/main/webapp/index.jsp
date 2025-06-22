@@ -66,7 +66,7 @@
 </div>
 
 <script>
-    const baseUrl = "doctor"; // no slash needed if servlet is directly under context
+    const baseUrl = "doctor";  // no slash needed if servlet is directly under context
 
     const doctorForm = document.getElementById("doctorForm");
     const addBtn = document.getElementById("addBtn");
@@ -83,7 +83,7 @@
             name: document.getElementById("name").value,
             age: parseInt(document.getElementById("age").value),
             email: document.getElementById("email").value,
-            specility: document.getElementById("specility").value
+            speciality: document.getElementById("speciality").value
         };
 
         const method = id ? "PUT" : "POST";
@@ -97,6 +97,8 @@
         clearForm();
         loadDoctors();
     });
+
+
 
     async function loadDoctors() {
       try {
