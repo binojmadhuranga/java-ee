@@ -117,7 +117,7 @@
             "<td>" + doctor.name + "</td>" +
             "<td>" + doctor.age + "</td>" +
             "<td>" + doctor.email + "</td>" +
-            "<td>" + doctor.specility + "</td>" +
+            "<td>" + doctor.specialization + "</td>" +
             "<td>" +
                 "<button class='btn btn-sm btn-warning me-1' onclick='editDoctor(" + JSON.stringify(doctor) + ")'>Update</button>" +
                 "<button class='btn btn-sm btn-danger' onclick='deleteDoctor(" + doctor.id + ")'>Delete</button>" +
@@ -131,6 +131,8 @@
 }
 
     }
+
+
 
     function editDoctor(doctor) {
         document.getElementById("doctorId").value = doctor.id;

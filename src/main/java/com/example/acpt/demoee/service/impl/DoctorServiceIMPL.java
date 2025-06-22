@@ -160,7 +160,7 @@ public class DoctorServiceIMPL implements DoctorService {
             // Establish a connection to the database
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/afsd_hospital", "root", "1235");
 
-            // Prepare the SQL Quary
+            // Prepare the SQL Query
             PreparedStatement stm = connection.prepareStatement("SELECT * FROM doctors");
 
 
