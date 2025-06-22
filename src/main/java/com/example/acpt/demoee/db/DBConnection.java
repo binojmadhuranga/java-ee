@@ -1,4 +1,4 @@
-package com.example.acpt.demo.db;
+package com.example.acpt.demoee.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
