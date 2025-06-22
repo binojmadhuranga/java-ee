@@ -61,26 +61,23 @@
         </tr>
         </thead>
         <tbody id="doctorTableBody">
-        <!-- Rows Will Be Injected Here -->
         </tbody>
     </table>
 </div>
 
 <script>
-    const baseUrl = "/demo_ee_war_exploded";
-
-    document.addEventListener("DOMContentLoaded", loadDoctors);
+    const baseUrl = "doctor"; // no slash needed if servlet is directly under context
 
     const doctorForm = document.getElementById("doctorForm");
     const addBtn = document.getElementById("addBtn");
     const updateBtn = document.getElementById("updateBtn");
 
+    document.addEventListener("DOMContentLoaded", loadDoctors);
+
     doctorForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const id = document.getElementById("doctorId").value;
-        const method = id ? "PUT" : "POST";
-
         const doctor = {
             id: parseInt(id || 0),
             name: document.getElementById("name").value,
@@ -89,7 +86,9 @@
             specility: document.getElementById("specility").value
         };
 
-        await fetch(`${baseUrl}/doctor`, {
+        const method = id ? "PUT" : "POST";
+
+        await fetch(baseUrl, {
             method: method,
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(doctor)
@@ -100,26 +99,35 @@
     });
 
     async function loadDoctors() {
-        const response = await fetch(`${baseUrl}/doctor`);
-        const doctors = await response.json();
-        const tbody = document.getElementById("doctorTableBody");
-        tbody.innerHTML = "";
+      try {
+    const response = await fetch(baseUrl);
+    if (!response.ok) throw new Error("Failed to load");
 
-        doctors.forEach(doctor => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${doctor.id}</td>
-                <td>${doctor.name}</td>
-                <td>${doctor.age}</td>
-                <td>${doctor.email}</td>
-                <td>${doctor.specility}</td>
-                <td>
-                    <button class="btn btn-sm btn-warning me-1" onclick='editDoctor(${JSON.stringify(doctor)})'>Update</button>
-                    <button class="btn btn-sm btn-danger" onclick="deleteDoctor(${doctor.id})">Delete</button>
-                </td>
-            `;
-            tbody.appendChild(row);
-        });
+    const doctors = await response.json();
+    const tbody = document.getElementById("doctorTableBody");
+    tbody.innerHTML = "";
+
+    doctors.forEach(doctor => {
+        const row = document.createElement("tr");
+
+        row.innerHTML =
+            "<td>" + doctor.id + "</td>" +
+            "<td>" + doctor.name + "</td>" +
+            "<td>" + doctor.age + "</td>" +
+            "<td>" + doctor.email + "</td>" +
+            "<td>" + doctor.specility + "</td>" +
+            "<td>" +
+                "<button class='btn btn-sm btn-warning me-1' onclick='editDoctor(" + JSON.stringify(doctor) + ")'>Update</button>" +
+                "<button class='btn btn-sm btn-danger' onclick='deleteDoctor(" + doctor.id + ")'>Delete</button>" +
+            "</td>";
+
+        tbody.appendChild(row);
+    });
+} catch (err) {
+    console.error(err);
+    alert("Error loading doctors");
+}
+
     }
 
     function editDoctor(doctor) {
@@ -134,10 +142,8 @@
     }
 
     async function deleteDoctor(id) {
-        if (confirm("Are you sure you want to delete this doctor?")) {
-            await fetch(`${baseUrl}/doctor?id=${id}`, {
-                method: "DELETE"
-            });
+        if (confirm("Delete this doctor?")) {
+            await fetch(`${baseUrl}?id=${id}`, { method: "DELETE" });
             loadDoctors();
         }
     }
@@ -149,6 +155,5 @@
         updateBtn.classList.add("d-none");
     }
 </script>
-
 </body>
 </html>
