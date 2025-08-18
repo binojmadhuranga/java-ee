@@ -11,7 +11,6 @@ public class AppoinmentDto {
 
     private List<AppoinmentDetailDto> appoinmentDetailDtos;
 
-
     public String getData() {
         return date;
     }
