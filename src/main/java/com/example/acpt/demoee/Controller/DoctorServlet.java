@@ -17,7 +17,6 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/doctor"})
 public class DoctorServlet extends HttpServlet {
-
     
     private final DoctorService service = new DoctorServiceIMPL();
     private final Gson gson = new Gson();
